@@ -74,9 +74,9 @@ bool WebRadioClass::GetStations(fs::FS &fs, const char *path)
 			int r = StationList.indexOf(";");
 			link = StationList.substring(0, r);
 			StationList.replace(String(link + ";"), "");
-			if (StationList != "\0")
+			while (StationList[0]==10 || StationList[0]==13)
 			{
-				StationList = StationList.substring(2);
+				StationList = StationList.substring(1);
 			}
 			Name.push_back(name);
 			Link.push_back(link);
