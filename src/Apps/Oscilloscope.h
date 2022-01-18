@@ -1,8 +1,8 @@
 #pragma once
 #include "M5StackMod.h"
 
-#define CH1COLOR YELLOW
-#define CH2COLOR MAGENTA
+#define CH1COLOR TFT_YELLOW
+#define CH2COLOR TFT_MAGENTA
 #define OSCGREY 0x7BEF
 #define LCD_WIDTH 320
 #define LCD_HEIGHT 240

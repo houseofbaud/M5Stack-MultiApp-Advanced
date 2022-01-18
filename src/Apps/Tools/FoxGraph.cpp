@@ -53,8 +53,7 @@ void FoxGraphClass::ShowGraph()
     String tmpst;
     bool debug=false;
 
-    M5m.Lcd.cursor_x=0;
-    M5m.Lcd.cursor_y=0;
+    M5m.Lcd.setCursor(0,0);
 
     http.begin(Link[curURL]);
     httpCode = http.GET();
@@ -96,14 +95,14 @@ void FoxGraphClass::ShowGraph()
     }
 
     for (int i=0;i<316;i++){
-        M5m.Lcd.drawLine(i,30,i,210,BLACK);
+        M5m.Lcd.drawLine(i,30,i,210,TFT_BLACK);
     }
 
     for (int i=0;i<valcount;i++){
-        M5m.Lcd.drawLine(MAX_X-i, 210, MAX_X-i, 30-(valArray[valcount-i]-valmax)*coef, GREEN);
+        M5m.Lcd.drawLine(MAX_X-i, 210, MAX_X-i, 30-(valArray[valcount-i]-valmax)*coef, TFT_GREEN);
     }
 
-    M5m.Lcd.setTextColor(RED);
+    M5m.Lcd.setTextColor(TFT_RED);
 
 	M5m.Lcd.drawString("Max", 0, 30, 2);
 	M5m.Lcd.drawString(String(valmax), 26, 30, 2);
@@ -114,7 +113,7 @@ void FoxGraphClass::ShowGraph()
     M5m.Lcd.drawString("Min", 0, 190, 2);
 	M5m.Lcd.drawString(String(valmin), 26, 190, 2);
     
-    M5m.Lcd.setTextColor(BLUE);
+    M5m.Lcd.setTextColor(TFT_BLUE);
     M5m.Lcd.drawString(Name[curURL],150,120,2);
 
 }

@@ -3,9 +3,9 @@
 //========================================================================
 void TetrisClass::Run()
 {
-    M5m.Lcd.fillScreen(BLACK); // CLEAR SCREEN
+    M5m.Lcd.fillScreen(TFT_BLACK); // CLEAR SCREEN
     //----------------------------// Make Blocks ----------------------------
-    make_block(0, BLACK);  // Type No, Color
+    make_block(0, TFT_BLACK);  // Type No, Color
     make_block(1, 0x00F0); // DDDD     RED
     make_block(2, 0xFBE4); // DD,DD    PUPLE
     make_block(3, 0xFF00); // D__,DDD  BLUE
@@ -22,7 +22,7 @@ void TetrisClass::Run()
         screen[pos.X + block.square[rot][i].X][pos.Y + block.square[rot][i].Y] = block.color;
     }
     Draw(); // Draw block
-    M5m.Lcd.setTextColor(BLUE);
+    M5m.Lcd.setTextColor(TFT_BLUE);
     M5m.Lcd.drawCentreString("Score", 50, 150, 1);
     M5m.Lcd.drawCentreString("Max Score", 50, 190, 1);
     M5m.Lcd.drawCentreString(String(max_score), 50, 210, 1);
@@ -33,7 +33,7 @@ void TetrisClass::Run()
         {
             M5m.update();
             M5m.Lcd.setFreeFont(FSS24);
-            M5m.Lcd.setTextColor(RED);
+            M5m.Lcd.setTextColor(TFT_RED);
             M5m.Lcd.drawCentreString("GAME OVER", 160, 110, 1);
 
             while (!M5m.BtnB.wasPressed())
@@ -77,7 +77,7 @@ void TetrisClass::PutStartPos()
     rot = random(block.numRotate);
     M5m.Lcd.setTextColor(3608);
     M5m.Lcd.drawCentreString(String(score), 50, 170, 1);
-    M5m.Lcd.setTextColor(RED);
+    M5m.Lcd.setTextColor(TFT_RED);
     score++;
     M5m.Lcd.drawCentreString(String(score), 50, 170, 1);
 
@@ -85,7 +85,7 @@ void TetrisClass::PutStartPos()
     {
         M5m.Lcd.setTextColor(3608);
         M5m.Lcd.drawCentreString(String(max_score), 50, 210, 1);
-        M5m.Lcd.setTextColor(RED);
+        M5m.Lcd.setTextColor(TFT_RED);
         max_score = score;
         M5m.Lcd.drawCentreString(String(max_score), 50, 210, 1);
     }

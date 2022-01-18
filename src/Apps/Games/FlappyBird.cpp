@@ -13,12 +13,12 @@ void FlappyBirdClass::game_loop()
     unsigned char GAMEH = TFTH - FLOORH;
     // draw the floor once, we will not overwrite on this area in-game
     // black line
-    M5m.Lcd.drawFastHLine(0, GAMEH, TFTW, BLACK);
+    M5m.Lcd.drawFastHLine(0, GAMEH, TFTW, TFT_BLACK);
     // grass and stripe
     M5m.Lcd.fillRect(0, GAMEH + 1, TFTW2, GRASSH, GRASSCOL);
     M5m.Lcd.fillRect(TFTW2, GAMEH + 1, TFTW2, GRASSH, GRASSCOL2);
     // black line
-    M5m.Lcd.drawFastHLine(0, GAMEH + GRASSH, TFTW, BLACK);
+    M5m.Lcd.drawFastHLine(0, GAMEH + GRASSH, TFTW, TFT_BLACK);
     // mud
     M5m.Lcd.fillRect(0, GAMEH + GRASSH + 1, TFTW, FLOORH - GRASSH, FLOORCOL);
     // grass x position (for stripe animation)
@@ -174,7 +174,7 @@ void FlappyBirdClass::game_loop()
             M5m.Lcd.setTextColor(BCKGRDCOL);
             M5m.Lcd.drawNumber(flappy_bird_score, TFTW2, 4);
             // set text color back to white for new flappy_bird_score
-            M5m.Lcd.setTextColor(WHITE);
+            M5m.Lcd.setTextColor(TFT_WHITE);
             // increase flappy_bird_score since we successfully passed a pipe
             flappy_bird_score++;
         }
@@ -209,10 +209,10 @@ void FlappyBirdClass::game_init()
 // ---------------
 void FlappyBirdClass::game_start()
 {
-    M5m.Lcd.fillScreen(BLACK);
-    M5m.Lcd.fillRect(10, TFTH2 - 20, TFTW - 20, 1, WHITE);
-    M5m.Lcd.fillRect(10, TFTH2 + 32, TFTW - 20, 1, WHITE);
-    M5m.Lcd.setTextColor(WHITE);
+    M5m.Lcd.fillScreen(TFT_BLACK);
+    M5m.Lcd.fillRect(10, TFTH2 - 20, TFTW - 20, 1, TFT_WHITE);
+    M5m.Lcd.fillRect(10, TFTH2 + 32, TFTW - 20, 1, TFT_WHITE);
+    M5m.Lcd.setTextColor(TFT_WHITE);
     M5m.Lcd.setTextSize(3);
     // half width - num char * char width in pixels
     M5m.Lcd.drawString("FLAPPY", TFTW2 - (6 * 9), TFTH2 - 16);
@@ -246,7 +246,7 @@ void FlappyBirdClass::resetMaxflappy_bird_score()
 // ---------------
 void FlappyBirdClass::game_over()
 {
-    M5m.Lcd.fillScreen(BLACK);
+    M5m.Lcd.fillScreen(TFT_BLACK);
     preferences.begin("Fpsc", false);
     maxflappy_bird_score = preferences.getInt("sc", 0);
 
@@ -254,14 +254,14 @@ void FlappyBirdClass::game_over()
     {
         preferences.putInt("sc", flappy_bird_score);
         maxflappy_bird_score = flappy_bird_score;
-        M5m.Lcd.setTextColor(RED);
+        M5m.Lcd.setTextColor(TFT_RED);
         M5m.Lcd.setTextSize(2);
         //M5m.Lcd.setCursor(TFTW2 - (13 * 6), TFTH2 - 26);
         M5m.Lcd.drawString("NEW HIGHSCORE", TFTW2 - (13 * 6), TFTH2 - 26);
     }
     preferences.end();
 
-    M5m.Lcd.setTextColor(WHITE);
+    M5m.Lcd.setTextColor(TFT_WHITE);
     M5m.Lcd.setTextSize(3);
     // half width - num char * char width in pixels
     M5m.Lcd.drawString("GAME OVER", TFTW2 - (9 * 9), TFTH2 - 6);

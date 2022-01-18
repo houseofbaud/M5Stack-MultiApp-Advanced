@@ -8,10 +8,10 @@ void DhtReaderClass::DrawWidgets()
     M5m.Lcd.drawCentreString("Humidity", 260, 80, 2);
     M5m.Lcd.drawCentreString(String(humidity, 2), 260, 100, 4);
     M5m.Lcd.drawCentreString("%RH", 260, 125, 2);
-    M5m.Lcd.VprogressBar(120, 50, 20, 100, RED, (int)temperature + 20, true);
-    M5m.Lcd.fillCircle(129, 160, 20, RED);
-    M5m.Lcd.VprogressBar(180, 50, 20, 100, BLUE, (int)humidity - 20, true);
-    M5m.Lcd.fillCircle(189, 160, 20, BLUE);
+    M5m.Lcd.VprogressBar(120, 50, 20, 100, TFT_RED, (int)temperature + 20, true);
+    M5m.Lcd.fillCircle(129, 160, 20, TFT_RED);
+    M5m.Lcd.VprogressBar(180, 50, 20, 100, TFT_BLUE, (int)humidity - 20, true);
+    M5m.Lcd.fillCircle(189, 160, 20, TFT_BLUE);
 }
 
 void DhtReaderClass::getDHTData()
@@ -103,7 +103,7 @@ void DhtReaderClass::getSHTData(uint8_t _address)
 void DhtReaderClass::Run()
 {
     M5m.update();
-    M5m.Lcd.fillScreen(BLACK);
+    M5m.Lcd.fillScreen(TFT_BLACK);
     M5m.drawAppMenu(F("SHT Sensor"), F("ESC"), F("SHT"), F(""));
 
     while (!M5m.BtnA.wasPressed())

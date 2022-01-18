@@ -303,9 +303,9 @@ void M5StackMod::begin()
 
   // M5 LCD INIT
   Lcd.begin();
-  Lcd.fillScreen(BLACK);
+  Lcd.fillScreen(TFT_BLACK);
   Lcd.setCursor(0, 0);
-  Lcd.setTextColor(WHITE);
+  Lcd.setTextColor(TFT_WHITE);
   Lcd.setTextSize(1);
   Lcd.setBrightness(50);
 

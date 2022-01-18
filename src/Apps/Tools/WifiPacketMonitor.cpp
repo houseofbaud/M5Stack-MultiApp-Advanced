@@ -89,9 +89,9 @@ void draw()
 	}
 	String p = "Ch: " + (String)ch + " | Rssi: " + (String)rssi + " | Packets: " +
 			   (String)tmpPacketCounter + " | Deauth: [" + deauths + "]";
-	M5m.Lcd.setTextColor(WHITE, BLUE);
+	M5m.Lcd.setTextColor(TFT_WHITE, TFT_BLUE);
 	M5m.Lcd.drawString(p + "  ", 10, 2, 2);						 // string DRAW
-	M5m.Lcd.drawLine(40, MAX_Y - 200, MAX_X, MAX_Y - 200, GREEN); // MAX LINE DRAW
+	M5m.Lcd.drawLine(40, MAX_Y - 200, MAX_X, MAX_Y - 200, TFT_GREEN); // MAX LINE DRAW
 	for (int i = 40; i < MAX_X; i++)
 	{
 		len = pkts[i] * multiplicator;
@@ -100,14 +100,14 @@ void draw()
 		{
 			len = 200;
 		}
-		M5m.Lcd.drawLine(i, MAX_Y, i, 31, BLACK);		  // LINE EARSE
-		M5m.Lcd.drawLine(i, MAX_Y, i, MAX_Y - len, GREEN); // LINE DRAW
+		M5m.Lcd.drawLine(i, MAX_Y, i, 31, TFT_BLACK);		  // LINE EARSE
+		M5m.Lcd.drawLine(i, MAX_Y, i, MAX_Y - len, TFT_GREEN); // LINE DRAW
 		if (i < MAX_X - 1)
 		{
 			pkts[i] = pkts[i + 1];
 		}
 	}
-	M5m.Lcd.setTextColor(RED);
+	M5m.Lcd.setTextColor(TFT_RED);
 	M5m.Lcd.drawString("Ch-", 57, 210, 2);
 	M5m.Lcd.drawString("Exit", 148, 210, 2);
 	M5m.Lcd.drawString("Ch+", 247, 210, 2);
@@ -119,8 +119,8 @@ void Monitor_run()
 	WiFi.mode(WIFI_MODE_NULL);
 	WiFi.begin();
 	esp_wifi_set_channel(ch, WIFI_SECOND_CHAN_NONE);
-	M5m.Lcd.fillScreen(BLACK);
-	M5m.Lcd.setTextColor(WHITE, BLACK);
+	M5m.Lcd.fillScreen(TFT_BLACK);
+	M5m.Lcd.setTextColor(TFT_WHITE, TFT_BLACK);
 	;
 	int s = 10, a = 0;
 	for (int ypos = MAX_Y; ypos > 120; ypos = ypos - s)
@@ -130,7 +130,7 @@ void Monitor_run()
 		a = a + 10;
 	}
 	M5m.Lcd.setTextDatum(TL_DATUM);
-	M5m.Lcd.fillRect(0, 0, 320, 20, BLUE);
+	M5m.Lcd.fillRect(0, 0, 320, 20, TFT_BLUE);
 	esp_wifi_set_promiscuous_rx_cb(&wifi_promiscuous);
 	esp_wifi_set_promiscuous(true);
 	uint32_t currentTime;

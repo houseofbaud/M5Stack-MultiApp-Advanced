@@ -23,7 +23,7 @@ void CfgBrightnessClass::Run()
             M5m.Lcd.setBrightness(tmp_lbright);
             M5m.windowClr();
             val = map(tmp_lbright, 16, 255, 0, 100);
-            M5m.Lcd.HprogressBar(40, 110, 240, 30, YELLOW, val, true);
+            M5m.Lcd.HprogressBar(40, 110, 240, 30, TFT_YELLOW, val, true);
         }
         M5m.update();
     }

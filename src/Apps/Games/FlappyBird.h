@@ -29,8 +29,8 @@
 #define C0 BCKGRDCOL
 #define C1 M5m.Lcd.color565(195, 165, 75)
 #define C2 BIRDCOL
-#define C3 WHITE
-#define C4 RED
+#define C3 TFT_WHITE
+#define C4 TFT_RED
 #define C5 M5m.Lcd.color565(251, 216, 114)
 
 class FlappyBirdClass

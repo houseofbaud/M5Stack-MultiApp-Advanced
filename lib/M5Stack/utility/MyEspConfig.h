@@ -1,12 +1,14 @@
 #ifndef _CONFIG_H_
 #define _CONFIG_H_
 
-#define SPI_FREQUENCY  40000000
+// #define SPI_FREQUENCY  40000000
 
 // For the M5Stack module use these #define lines
 #ifdef M5STACK
 
 #define My_SD SD
+
+/*
 // Screen
 #define TFT_MISO 19
 #define TFT_MOSI 23
@@ -15,7 +17,7 @@
 #define TFT_DC   27  // Data Command control pin
 #define TFT_RST  33  // Reset pin (could connect to Arduino RESET pin)
 #define TFT_BL   32  // LED back-light
-
+*/
 // SD card
 #define TFCARD_CS_PIN 4
 

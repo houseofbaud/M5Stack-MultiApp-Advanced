@@ -41,41 +41,41 @@ void WifiSettingsClass::SmartConfig()
     M5m.Lcd.drawString("Waiting for SmartConfig", 5, 30, 2);
     while (!WiFi.smartConfigDone())
     {
-        M5m.Lcd.setTextColor(WHITE);
+        M5m.Lcd.setTextColor(TFT_WHITE);
         M5m.Lcd.drawNumber(i, 5, 50, 2);
         delay(500);
-        M5m.Lcd.setTextColor(BLACK);
+        M5m.Lcd.setTextColor(TFT_BLACK);
         M5m.Lcd.drawNumber(i, 5, 50, 2);
         if (i == 119)
         {
-            M5m.Lcd.setTextColor(WHITE);
+            M5m.Lcd.setTextColor(TFT_WHITE);
             M5m.Lcd.drawString("SmartConfig NOT received!", 5, 70, 2);
             STA_Mode();
             return;
         }
         i++;
     }
-    M5m.Lcd.setTextColor(WHITE);
+    M5m.Lcd.setTextColor(TFT_WHITE);
     M5m.Lcd.drawString("SmartConfig received", 5, 70, 2);
     M5m.Lcd.drawString("Waiting for WiFi", 5, 90, 2);
     i = 0;
     while (WiFi.status() != WL_CONNECTED)
     {
-        M5m.Lcd.setTextColor(WHITE);
+        M5m.Lcd.setTextColor(TFT_WHITE);
         M5m.Lcd.drawNumber(i, 5, 110, 2);
         vTaskDelay(500 / portTICK_PERIOD_MS);
-        M5m.Lcd.setTextColor(BLACK);
+        M5m.Lcd.setTextColor(TFT_BLACK);
         M5m.Lcd.drawNumber(i, 5, 110, 2);
         if (i == 59)
         {
             STA_Mode();
-            M5m.Lcd.setTextColor(WHITE);
+            M5m.Lcd.setTextColor(TFT_WHITE);
             M5m.Lcd.drawString("Wifi Not Found!", 5, 130, 2);
             return;
         }
         i++;
     }
-    M5m.Lcd.setTextColor(WHITE);
+    M5m.Lcd.setTextColor(TFT_WHITE);
     M5m.Lcd.drawString("WiFi Connected", 5, 130, 2);
     M5m.Lcd.drawString("IP: " + WiFi.localIP().toString(), 5, 150, 2);
     M5m.WiFi_Mode = WIFI_MODE_STA;
