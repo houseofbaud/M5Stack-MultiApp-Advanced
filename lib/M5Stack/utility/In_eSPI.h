@@ -15,10 +15,11 @@
 #ifndef _In_eSPIH_
 #define _In_eSPIH_
 
+#include "MyEspConfig.h"
+
 // #define ILI9341_DRIVER
 #ifdef ILI9341_DRIVER
 #include "ILI9341_Defines.h"
-#include "MyEspConfig.h"
 #define  TFT_DRIVER 0x9341
 #endif
 
