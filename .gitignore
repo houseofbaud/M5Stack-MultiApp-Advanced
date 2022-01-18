@@ -29,6 +29,7 @@ x86/
 [Oo]bj/
 [Ll]og/
 Shaders/src/*/
+.pio/
 
 ###############################################################################
 # Visual Studio Cache/Options Directory
