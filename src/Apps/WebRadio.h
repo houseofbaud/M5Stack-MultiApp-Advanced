@@ -18,7 +18,7 @@ private:
   AudioOutputI2S *out = NULL;
 
   const int preallocateBufferSize = 16384;
-  const int preallocateCodecSize = 29192;
+  const int preallocateCodecSize = AudioGeneratorMP3::preAllocSize();
   void *preallocateBuffer = NULL;
   void *preallocateCodec = NULL;
 
