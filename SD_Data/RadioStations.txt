@@ -1,4 +1,8 @@
-EuropaFm=http://astreaming.europafm.ro:8000/europafm_mp3_64k;
-ProFm=http://edge126.rdsnet.ro:84/profm/profm.mp3;
-DigiFm=http://edge76.rdsnet.ro:84/digifm/digifm.mp3;
-TOP Radio=http://23553.live.streamtheworld.com/TOP_RADIO.mp3;
+TOP Radio=http://playerservices.streamtheworld.com/api/livestream-redirect/TOP_RADIO.mp3;
+Stu Bru=http://icecast.vrtcdn.be/stubru-high.mp3;
+Stu Bru UNTZ=http://icecast.vrtcdn.be/stubru_untz-high.mp3;
+MNM=http://icecast.vrtcdn.be/mnm-high.mp3;
+MNM hits=http://icecast.vrtcdn.be/mnm_hits-high.mp3;
+Klara continuo=http://icecast.vrtcdn.be/klaracontinuo-high.mp3;
+Klara=http://icecast.vrtcdn.be/klara-high.mp3;
+Radio 1=http://icecast.vrtcdn.be/radio1-high.mp3;
