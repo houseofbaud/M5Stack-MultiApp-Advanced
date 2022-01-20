@@ -161,6 +161,7 @@ void WebRadioClass::Run()
 					M5m.Lcd.drawCentreString(old_Station, 160, 35, 1);
 					M5m.Lcd.setTextColor(TFT_PINK);
 					M5m.Lcd.drawCentreString(Name[Station], 160, 35, 1);
+					MDCallback(NULL, NULL, false, "/");
 					old_Station = Name[Station];
 					file = new AudioFileSourceICYStream(Link[Station].c_str());
 					file->RegisterMetadataCB(MDCallback, (void *)"ICY");
