@@ -1,4 +1,6 @@
 TOP Radio=http://playerservices.streamtheworld.com/api/livestream-redirect/TOP_RADIO.mp3;
+TML=http://23603.live.streamtheworld.com/OWR_INTERNATIONAL_SC;
+Q music=http://21293.live.streamtheworld.com/QMUSIC.mp3;
 Stu Bru=http://icecast.vrtcdn.be/stubru-high.mp3;
 Stu Bru UNTZ=http://icecast.vrtcdn.be/stubru_untz-high.mp3;
 MNM=http://icecast.vrtcdn.be/mnm-high.mp3;
