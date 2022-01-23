@@ -53,10 +53,10 @@
 #define BUTTON_C_PIN 33
 
 #else 
-
-#define SPI_FREQUENCY  27000000
-
 #define My_SD SD
+
+/*
+#define SPI_FREQUENCY  27000000
 
 #define TFT_MISO 19
 #define TFT_MOSI 23
@@ -65,6 +65,9 @@
 #define TFT_DC   17  // Data Command control pin
 #define TFT_RST  -1  // Reset pin (could connect to Arduino RESET pin)
 #define TFT_BL   16  // LED back-light
+
+*/
+
 // SD card
 //#define TFCARD_CS_PIN 14
 #define SDA_PIN 21
@@ -72,7 +75,7 @@
 
 // Buttons
 #define BUTTON_A_PIN 32
-#define BUTTON_B_PIN 33
+#define BUTTON_B_PIN 35
 #define BUTTON_C_PIN 34
 
 #endif

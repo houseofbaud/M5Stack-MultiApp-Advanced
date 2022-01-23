@@ -43,7 +43,7 @@
 #include "AudioFileSourceBuffer.h"
 #include "AudioGeneratorMP3.h"
 #include "AudioOutputI2S.h"
-
+/*
 #ifdef M5STACK
 #include "SD.h"
 #define My_SD SD
@@ -51,7 +51,7 @@
 #include "SD_MMC.h"
 #define My_SD SD_MMC
 #endif
-
+*/
 #define MENU_TITLE_MAX_SIZE 24
 #define BTN_TITLE_MAX_SIZE 6
 #define MAX_SUBMENUS 3
