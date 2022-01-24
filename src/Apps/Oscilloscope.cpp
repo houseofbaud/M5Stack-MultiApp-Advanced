@@ -549,6 +549,13 @@ void OscilloscopeClass::Run()
 
 OscilloscopeClass::OscilloscopeClass()
 {
+	for (int i=0; i<4; ++i)
+	{
+		for (int j=0; j<SAMPLES; ++j)
+		{
+			data[i][j]=0;
+		}
+    }
 	M5m.Lcd.setTextSize(1);
 	M5m.Lcd.setTextFont(1);
 }
