@@ -10,7 +10,8 @@ void M5Display::begin()
   #ifdef M5STACK
   setRotation(1);
   #else
-  setRotation(3);
+  //  setRotation(3);
+  setRotation(7);
   #endif
   fillScreen(0);
 
@@ -54,9 +55,11 @@ inline void M5Display::writePixels(uint16_t *colors, uint32_t len)
 
 void M5Display::sleep()
 {
+  #ifdef ILI9341_DRIVER
   startWrite();
   writecommand(ILI9341_SLPIN); // Software reset
   endWrite();
+  #endif
 }
 
 void M5Display::setBrightness(uint8_t brightness)
