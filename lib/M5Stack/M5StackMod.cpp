@@ -264,22 +264,22 @@ void M5StackMod::drawMenu(String inmenuttl, String inbtnAttl, String inbtnBttl, 
   lastBtnTittle[0] = inbtnAttl;
   lastBtnTittle[1] = inbtnBttl;
   lastBtnTittle[2] = inbtnCttl;
-  Lcd.fillRoundRect(31, Lcd.height() - 28, 60, 28, 5, inmenucolor);
-  Lcd.fillRoundRect(126, Lcd.height() - 28, 60, 28, 5, inmenucolor);
-  Lcd.fillRoundRect(221, Lcd.height() - 28, 60, 28, 5, inmenucolor);
+  Lcd.fillRoundRect(Lcd.width()*9/80, Lcd.height() - 28, 60, 28, 5, inmenucolor);
+  Lcd.fillRoundRect(Lcd.width()*33/80, Lcd.height() - 28, 60, 28, 5, inmenucolor);
+  Lcd.fillRoundRect(Lcd.width()*56/80, Lcd.height() - 28, 60, 28, 5, inmenucolor);
   Lcd.fillRoundRect(0, 0, Lcd.width(), 28, 5, inmenucolor);
   Lcd.fillRoundRect(0, 29, Lcd.width(), Lcd.height() - 28 - 28, 5, inwindowcolor);
   if (iMenuImg != NULL)
   {
-    Lcd.drawJpg((uint8_t *)iMenuImg, (sizeof(iMenuImg) / sizeof(iMenuImg[0])), 0, 30);
+    Lcd.drawJpg((uint8_t *)iMenuImg, (sizeof(iMenuImg) / sizeof(iMenuImg[0])), 0, Lcd.height()/2-90,0,0,160-Lcd.width()/2);
   }
 
   Lcd.setTextColor(intxtcolor);
   Lcd.drawCentreString(inmenuttl, Lcd.width() / 2, 6, 2);
 
-  Lcd.drawCentreString(inbtnAttl, 31 + 30, Lcd.height() - 28 + 6, 2);
-  Lcd.drawCentreString(inbtnBttl, 126 + 30, Lcd.height() - 28 + 6, 2);
-  Lcd.drawCentreString(inbtnCttl, 221 + 30, Lcd.height() - 28 + 6, 2);
+  Lcd.drawCentreString(inbtnAttl, 30+Lcd.width()*9/80, Lcd.height() - 28 + 6, 2);
+  Lcd.drawCentreString(inbtnBttl, 30+Lcd.width()*33/80, Lcd.height() - 28 + 6, 2);
+  Lcd.drawCentreString(inbtnCttl, 30+Lcd.width()*56/80, Lcd.height() - 28 + 6, 2);
 }
 
 void M5StackMod::begin()

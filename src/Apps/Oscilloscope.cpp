@@ -385,6 +385,7 @@ void OscilloscopeClass::Run()
 	{
 		if (trig_mode != TRIG_SCAN)
 		{
+			unsigned int oad;
 			unsigned long st = millis();
 			if (trig_ch == 0)
 			{
@@ -396,6 +397,7 @@ void OscilloscopeClass::Run()
 			}
 			for (;;)
 			{
+				unsigned int ad;
 				if (trig_ch == 0)
 				{
 					ad = adRead(&ad_ch0, &ch0_mode, &ch0_off);

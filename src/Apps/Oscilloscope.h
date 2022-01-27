@@ -43,7 +43,7 @@ private:
   int trig_ch = 0;
   int menu = 19;
   int rate = 3;
-  unsigned int a, ad, oad, minval, maxval, trig_lv = 40;
+  unsigned int trig_lv = 40;
   int16_t ch0_off = 0;
   int16_t ch1_off = 0;
   unsigned int data[4][SAMPLES]; // keep twice of the number of channels to make it a double buffer
@@ -76,7 +76,7 @@ private:
 
 inline unsigned int OscilloscopeClass::adRead(const uint8_t *ch, uint8_t *mode, int16_t *off)
 {
-  a = analogRead(*ch);
+  unsigned int a = analogRead(*ch);
   a = (((a + *off) * VREF[(*ch == ad_ch0) ? range0 : range1]) / 10000) + 30;
   a = ((a >= LCD_HEIGHT) ? LCD_HEIGHT : a);
   if (*mode == MODE_INV)

@@ -54,7 +54,11 @@ uint8_t Button::read(void)
     static uint8_t pinVal;
 
     ms = millis();
+#ifdef M5STACK
+    pinVal = analogRead(_pin)>2048?1:0;
+#else
     pinVal = digitalRead(_pin);
+#endif
     if (_invert != 0) pinVal = !pinVal;
     if (ms - _lastChange < _dbTime) {
         _lastTime = _time;

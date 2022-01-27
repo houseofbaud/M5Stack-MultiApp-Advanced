@@ -69,14 +69,14 @@
 */
 
 // SD card
-//#define TFCARD_CS_PIN 14
+#define TFCARD_CS_PIN 4
 #define SDA_PIN 21
 #define SCL_PIN 22
 
 // Buttons
-#define BUTTON_A_PIN 32
-#define BUTTON_B_PIN 35
-#define BUTTON_C_PIN 34
+#define BUTTON_A_PIN 32 // GameOn SELECT
+#define BUTTON_B_PIN 0 // 32 // GameOn START
+#define BUTTON_C_PIN 27 // GameOn A
 
 #endif
 // UART

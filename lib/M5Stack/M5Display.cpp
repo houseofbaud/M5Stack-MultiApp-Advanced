@@ -8,10 +8,12 @@ void M5Display::begin()
 {
   M5m_eSPI::begin();
   #ifdef M5STACK
-  setRotation(1);
+  setRotation(1); // M5stack landscape
+//  setRotation(2); // M5stack portrait
   #else
-  //  setRotation(3);
-  setRotation(7);
+  //  setRotation(3); 
+  // setRotation(6); // non M5STACK portrait
+  setRotation(7); // non M5stack landscape
   #endif
   fillScreen(0);
 
