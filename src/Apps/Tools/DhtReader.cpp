@@ -3,10 +3,10 @@
 void DhtReaderClass::DrawWidgets()
 {
     M5m.Lcd.drawCentreString("Temperature", 60, 80, 2);
-    M5m.Lcd.drawCentreString(String(temperature, 2), 60, 100, 4);
+    M5m.Lcd.drawCentreString(String(temperature, 1), 60, 100, 4);
     M5m.Lcd.drawCentreString("'C", 60, 125, 2);
     M5m.Lcd.drawCentreString("Humidity", 260, 80, 2);
-    M5m.Lcd.drawCentreString(String(humidity, 2), 260, 100, 4);
+    M5m.Lcd.drawCentreString(String(humidity, 1), 260, 100, 4);
     M5m.Lcd.drawCentreString("%RH", 260, 125, 2);
     M5m.Lcd.VprogressBar(120, 50, 20, 100, TFT_RED, (int)temperature + 20, true);
     M5m.Lcd.fillCircle(129, 160, 20, TFT_RED);
@@ -40,6 +40,8 @@ void DhtReaderClass::getDHTData()
 
     for (int8_t i = -3; i < 2 * 40; i++)
     {
+        int age;
+
         startTime = micros();
 
         do
@@ -84,20 +86,27 @@ void DhtReaderClass::getDHTData()
 
 void DhtReaderClass::getSHTData(uint8_t _address)
 {
+    int num;
+
     Wire.beginTransmission(_address);
     Wire.write(0x2C);
     Wire.write(0x06);
     Wire.endTransmission();
     delay(500);
-    Wire.requestFrom((int)_address, 6);
+    num=Wire.requestFrom((int)_address, 6);
 
-    for (int i = 0; i < 6; i++)
+    if (num == 6)
     {
-        data[i] = Wire.read();
-    }
+        unsigned int data[6];
 
-    temperature = ((((data[0] * 256.0) + data[1]) * 175) / 65535.0) - t_dr;
-    humidity = ((((data[3] * 256.0) + data[4]) * 100) / 65535.0) + h_dr;
+        for (int i = 0; i < 6; i++)
+        {
+            data[i] = Wire.read();
+        }
+        
+        temperature = ((((data[0] * 256.0) + data[1]) * 175) / 65535.0) - t_dr;
+        humidity = ((((data[3] * 256.0) + data[4]) * 100) / 65535.0) + h_dr;
+    }
 }
 
 void DhtReaderClass::Run()
@@ -120,7 +129,6 @@ void DhtReaderClass::Run()
                     sw = false;
                 }
             }
-
             else
             {
                 getDHTData();
@@ -152,6 +160,21 @@ void DhtReaderClass::Run()
 
 DhtReaderClass::DhtReaderClass()
 {
+    _address=0x44;
+    Wire.beginTransmission(_address);
+    int error = Wire.endTransmission();
+
+    if (error)
+    {
+        _address=0x45;
+        Wire.beginTransmission(_address);
+        error = Wire.endTransmission();
+
+        if (error)
+        {
+            SHT=false;
+        }
+    }
 }
 
 DhtReaderClass::~DhtReaderClass()
