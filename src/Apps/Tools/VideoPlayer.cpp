@@ -3,7 +3,7 @@
 void VideoPlayerClass::Play(const char *fileName)
 {
     M5m.update();
-    dacWrite(25,255);
+    dacWrite(25, 0); // Speaker OFF
     M5m.Lcd.fillScreen(TFT_BLACK);
     file = My_SD.open(fileName);
     if (!file)
@@ -18,6 +18,7 @@ void VideoPlayerClass::Play(const char *fileName)
         M5m.update();
     }
     file.close();
+   	dacWrite(25, 0); // Speaker OFF
     return;
 }
 
