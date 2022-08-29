@@ -27,7 +27,9 @@ String wpspin2string(uint8_t a[])
 
 void wpsInitConfig(bool mode)
 {
+#if ESP_IDF_VERSION < ESP_IDF_VERSION_VAL(4, 4, 0) //  TODO moet gedefinieerd worden ifv arduino versie <2.0.3?? , niet IDF
     config.crypto_funcs = &g_wifi_default_wps_crypto_funcs;
+#endif
     if (mode)
     {
         config.wps_type = WPS_TYPE_PBC;
@@ -41,8 +43,11 @@ void wpsInitConfig(bool mode)
     strcpy(config.factory_info.model_name, ESP_MODEL_NAME);
     strcpy(config.factory_info.device_name, ESP_DEVICE_NAME);
 }
-
+#if ESP_IDF_VERSION < ESP_IDF_VERSION_VAL(4, 3, 0) //  TODO moet gedefinieerd worden ifv arduino versie <2.0.3, niet IDF
 void WiFiEvent(WiFiEvent_t event, system_event_info_t info)
+#else
+void WiFiEvent(WiFiEvent_t event, arduino_event_info_t info)
+#endif
 {
     switch (event)
     {
@@ -76,7 +81,11 @@ void WiFiEvent(WiFiEvent_t event, system_event_info_t info)
         esp_wifi_wps_start(0);
         break;
     case SYSTEM_EVENT_STA_WPS_ER_PIN:
+#if ESP_IDF_VERSION < ESP_IDF_VERSION_VAL(4, 3, 0) //  TODO moet gedefinieerd worden ifv arduino versie <2.0.3, niet IDF
         M5m.Lcd.drawString("WPS PIN = " + wpspin2string(info.sta_er_pin.pin_code), 5, 170, 4);
+#else
+        M5m.Lcd.drawString("WPS PIN = " + wpspin2string(info.wps_er_pin.pin_code), 5, 170, 4);
+#endif
         break;
     default:
         break;

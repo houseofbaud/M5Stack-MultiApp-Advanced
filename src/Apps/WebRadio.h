@@ -34,7 +34,7 @@ private:
   bool upd = true;
 
   void getvolume();
-  void setVolume(int *v);
+  void setVolume(int v);
   bool GetStations(fs::FS &fs, const char *path);
   void StopPlaying();
 };

@@ -1,10 +1,10 @@
 #pragma once
 #include "M5StackMod.h"
 
-#define TFTW 320  // screen width
-#define TFTH 240  // screen height
-#define TFTW2 160 // half screen width
-#define TFTH2 120 // half screen height
+#define TFTW (M5m.Lcd.width())  // screen width //240
+#define TFTH (M5m.Lcd.height())  // screen height // 240
+#define TFTW2 (M5m.Lcd.width()/2) // half screen width //120
+#define TFTH2 (M5m.Lcd.height()/2) // half screen height //120
 // game constant
 #define SPEED 1
 #define GRAVITY 9.8

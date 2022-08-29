@@ -46,7 +46,7 @@ void SpaceShooterClass::initVars()
   doSplode = false;
   fire = false;
   //--------------------------Aliens----------------------------------
-  alienLiveCount = 18;
+  alienLiveCount = numAliens;
   alienX = 7;
   alienY = 25;
   oldAlienX = 7;
@@ -128,8 +128,8 @@ void SpaceShooterClass::gameOver()
   M5m.Lcd.fillScreen(TFT_BLACK);
   drawalien_shooter_score(false);
   delay(1000);
-  M5m.Lcd.drawString("Start", 132, 221);
-  M5m.Lcd.drawString("Exit", 232, 221);
+  M5m.Lcd.drawString("Start", M5m.Lcd.width()*33/80, 221);
+  M5m.Lcd.drawString("Exit", M5m.Lcd.width()*56/80, 221);
   while (1)
   {
     // wait for push button
@@ -148,10 +148,10 @@ void SpaceShooterClass::gameOver()
 void SpaceShooterClass::levelUp()
 {
   play = false;
-  memset(alienLive, true, 18);
-  memset(aFireX, 0, 5);
-  memset(aFireY, 0, 5);
-  memset(aFireAge, 0, 5);
+  memset(alienLive, true, numAliens);
+  memset(fFireX, 0, 5*sizeof(int));
+  memset(fFireY, 0, 5*sizeof(int));
+  memset(fFireAge, 0, 5*sizeof(int));
   alienX = 7;
   alienY = 25;
   oldAlienX = 7;
@@ -203,13 +203,13 @@ void SpaceShooterClass::levelUp()
   play = true;
 }
 //==================================================================
-int SpaceShooterClass::findAlienX(int num) { return alienX + 42 * (num % 6); }
+int SpaceShooterClass::findAlienX(int num) { return alienX + 42 * (num % numAliensRow); }
 //==================================================================
-int SpaceShooterClass::findAlienY(int num) { return alienY + 33 * (num / 6); }
+int SpaceShooterClass::findAlienY(int num) { return alienY + 33 * (num / numAliensRow); }
 //==================================================================
-int SpaceShooterClass::findOldAlienX(int num) { return oldAlienX + 42 * (num % 6); }
+int SpaceShooterClass::findOldAlienX(int num) { return oldAlienX + 42 * (num % numAliensRow); }
 //==================================================================
-int SpaceShooterClass::findOldAlienY(int num) { return oldAlienY + 33 * (num / 6); }
+int SpaceShooterClass::findOldAlienY(int num) { return oldAlienY + 33 * (num / numAliensRow); }
 //==================================================================
 bool SpaceShooterClass::alienShot(int num)
 {
@@ -255,7 +255,7 @@ bool SpaceShooterClass::exceedBoundary(int num)
 //==================================================================
 void SpaceShooterClass::moveAliens()
 {
-  for (int i = 0; i < 18; i++)
+  for (int i = 0; i < numAliens; i++)
   {
     if (alienLive[i])
     {
@@ -384,14 +384,14 @@ void SpaceShooterClass::select()
 void SpaceShooterClass::spaceShoot_run()
 {
   initVars();
-  memset(alienLive, true, 18);
-  memset(aFireX, 0, 5);
-  memset(aFireY, 0, 5);
-  memset(aFireAge, 0, 5);
+  memset(alienLive, true, numAliens);
+  memset(fFireX, 0, 5*sizeof(int));
+  memset(fFireY, 0, 5*sizeof(int));
+  memset(fFireAge, 0, 5*sizeof(int));
   M5m.Lcd.fillScreen(TFT_BLACK);
   M5m.Lcd.setTextColor(0x5E85);
   M5m.Lcd.setTextSize(3);
-  randomSeed(analogRead(2));
+  // randomSeed(analogRead(2)); daar zit ws2812 op bij fri3d badge
   while (1)
   {
     if (M5m.BtnA.isPressed())
@@ -471,7 +471,7 @@ void SpaceShooterClass::spaceShoot_run()
       moveAliens();
       offsetA = millis();
     }
-    if (findAlienX(5) >= 294)
+    if (findAlienX(numAliensRow-1) >= M5m.Lcd.width()-26)
     {
       changeAlienX = -3;
       changeAlienY = 7;
@@ -482,7 +482,7 @@ void SpaceShooterClass::spaceShoot_run()
       changeAlienY = 7;
     }
     alienLiveCount = 0;
-    for (int i = 0; i < 18; i++)
+    for (int i = 0; i < numAliens; i++)
     {
       if (alienLive[i])
       {

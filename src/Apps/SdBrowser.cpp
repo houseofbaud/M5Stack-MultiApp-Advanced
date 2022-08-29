@@ -28,6 +28,11 @@ void SdBrowserClass::listDir(fs::FS &fs, String dirName, int levels)
             {
                 fileVector.push_back(fileinfo);
                 String fileName = file.name();
+                if (fileName[0]!='/')
+                {
+                    String rootstr="/";
+                    fileName=rootstr+fileName;
+                }
                 fileVector[appsCount].fileName = fileName;
                 fileVector[appsCount].fileSize = file.size();
                 appsCount++;

@@ -3,8 +3,14 @@
 void VideoPlayerClass::Play(const char *fileName)
 {
     M5m.update();
+    dacWrite(25,255);
     M5m.Lcd.fillScreen(TFT_BLACK);
     file = My_SD.open(fileName);
+    if (!file)
+    {
+        Serial.println("Error opening video file.");
+        return;
+    }
     M5m.Lcd.setSwapBytes(true);
     while(!M5m.BtnB.wasPressed() && file.read(videoBuffer, 93960))
     {

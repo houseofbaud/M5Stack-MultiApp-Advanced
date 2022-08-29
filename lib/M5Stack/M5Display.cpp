@@ -1,5 +1,9 @@
 #include "M5Display.h"
 
+#ifdef FRI3DBADGE2022
+#include <Wire.h>
+#endif
+
 #define BLK_PWM_CHANNEL 7 //LEDC_CHANNEL_7
 
 M5Display::M5Display() : M5m_eSPI() {}
@@ -12,8 +16,12 @@ void M5Display::begin()
 //  setRotation(2); // M5stack portrait
   #else
   //  setRotation(3); 
-  // setRotation(6); // non M5STACK portrait
-  setRotation(7); // non M5stack landscape
+#ifdef FRI3DBADGE2022
+  setRotation(6); // non M5STACK portrait
+  #else
+  setRotation(6); // non M5STACK portrait
+  // setRotation(7); // non M5stack landscape
+  #endif
   #endif
   fillScreen(0);
 
@@ -61,13 +69,31 @@ void M5Display::sleep()
   startWrite();
   writecommand(ILI9341_SLPIN); // Software reset
   endWrite();
+  #else
+  startWrite();
+  writecommand(TFT_SLPIN); // Software reset
+  endWrite();
   #endif
 }
 
 void M5Display::setBrightness(uint8_t brightness)
 {
-  #ifdef M5STACK
+#ifdef M5STACK
   ledcWrite(BLK_PWM_CHANNEL, brightness);
+#elif defined(FRI3DBADGE2022)
+  if (brightness) {
+    Wire.begin();
+    Wire.beginTransmission(0x18);
+    Wire.write(0x25);
+    Wire.write(0x0A);
+    Wire.endTransmission(true);
+  } else {
+    Wire.begin();
+    Wire.beginTransmission(0x18);
+    Wire.write(0x25);
+    Wire.write(0x00);
+    Wire.endTransmission(true);
+  }
   #else
   ledcWrite(BLK_PWM_CHANNEL, 255 - brightness);
   #endif

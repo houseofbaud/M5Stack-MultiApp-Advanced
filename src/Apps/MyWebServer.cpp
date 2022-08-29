@@ -310,7 +310,7 @@ void MywebServer(void *parameter)
         }
         else
         {
-            M5m.Lcd.drawString("http://" + WiFi.localIP().toString(), 10, 70, 4);
+            M5m.Lcd.drawString("http://" + WiFi.localIP().toString(), 10, 70, M5m.Lcd.width()>=320?4:2);
         }
 
         server.on("/list", HTTP_GET, printDirectory);
@@ -327,7 +327,7 @@ void MywebServer(void *parameter)
     for (;;)
     {
         server.handleClient();
-        //vTaskDelay(1 / portTICK_PERIOD_MS);
+        vTaskDelay(1 / portTICK_PERIOD_MS);
     }
     vTaskDelete(NULL);
 }
@@ -344,8 +344,8 @@ void WebServerClass::Run()
             {
                 vTaskDelete(webServerTask);
                 webServerTask = NULL;
-                M5m.Lcd.drawString("MDNS server stoped", 10, 40, 4);
-                M5m.Lcd.drawString("HTTP server stoped", 10, 70, 4);
+                M5m.Lcd.drawString("MDNS server stopped", 10, 40, 4);
+                M5m.Lcd.drawString("HTTP server stopped", 10, 70, 4);
             }
         }
 

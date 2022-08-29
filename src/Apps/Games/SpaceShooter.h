@@ -41,7 +41,14 @@ class SpaceShooterClass
     int fFireY[5];
     int fFireAge[5];
     //--------------------------Aliens----------------------------------
-    bool alienLive[18];
+    #ifdef M5STACK
+    const static int numAliensRow = 6;
+    #else
+    const static int numAliensRow = (TFT_WIDTH/80+2); // 240 ->5; 320->6
+    #endif
+    const static int numAliens = 3*numAliensRow;
+
+    bool alienLive[numAliens];
     int alienLiveCount;
     int alienX;
     int alienY;
@@ -51,9 +58,6 @@ class SpaceShooterClass
     int changeAlienY;
     int alienSpeed;
     int oldAlienSpeed;
-    int aFireX[5];
-    int aFireY[5];
-    bool aFireAge[5];
     int chanceOfFire;
     //================================ bitmaps ========================
     //your starship

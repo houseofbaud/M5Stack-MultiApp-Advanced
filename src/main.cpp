@@ -40,7 +40,9 @@ void setup()
 
 	M5m.addMenuItem(2, "SYSTEM INFORMATIONS", "<", "OK", ">", -1, Sysinfo, appSysInfo);
 	M5m.addMenuItem(2, "WIFI CONNECTION", "<", "OK", ">", -1, WifiConn, appWiFiSetup);
-	M5m.addMenuItem(2, "DISPLAY BACKLIGHT", "<", "OK", ">", -1, Backlight, appCfgbrightness);
+	if (TFT_BL>0) {
+		M5m.addMenuItem(2, "DISPLAY BACKLIGHT", "<", "OK", ">", -1, Backlight, appCfgbrightness);
+	}
 	M5m.addMenuItem(2, "RETURN", "<", "OK", ">", 0, Return, appReturn);
 
 	M5m.show();

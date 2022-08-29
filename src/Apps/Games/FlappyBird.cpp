@@ -198,7 +198,7 @@ void FlappyBirdClass::game_init()
     bird.vel_y = -JUMP_FORCE;
     tmpx = tmpy = 0;
     // generate new random seed for the pipe gape
-    randomSeed(analogRead(0));
+    // randomSeed(analogRead(0)); // pin 0 is ADC2 pin die niet gebruikt kan worden met Wifi 
     // init pipe
     pipes.x = 0;
     pipes.gap_y = random(20, TFTH - 60);
@@ -269,9 +269,9 @@ void FlappyBirdClass::game_over()
     M5m.Lcd.drawString("Score: " + String(flappy_bird_score), 10, 10);
     M5m.Lcd.drawString("press button", TFTW2 - (12 * 6), TFTH2 + 18);
     M5m.Lcd.drawString("Max Score:" + String(maxflappy_bird_score), 10, 28);
-    M5m.Lcd.drawString("ScoreR", 30, 221);
-    M5m.Lcd.drawString("Start", 132, 221);
-    M5m.Lcd.drawString("Exit", 232, 221);
+    M5m.Lcd.drawString("ScoreR", M5m.Lcd.width()*5/80, 221); // 30
+    M5m.Lcd.drawString("Start", M5m.Lcd.width()*33/80, 221); // 132
+    M5m.Lcd.drawString("Exit", M5m.Lcd.width()*58/80, 221); // 232
     while (1)
     {
         if (M5m.BtnA.wasPressed())

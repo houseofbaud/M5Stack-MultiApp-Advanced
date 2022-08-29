@@ -74,9 +74,12 @@
 #define SCL_PIN 22
 
 // Buttons
-#define BUTTON_A_PIN 32 // GameOn SELECT
-#define BUTTON_B_PIN 0 // 32 // GameOn START
-#define BUTTON_C_PIN 27 // GameOn A
+// #define BUTTON_A_PIN 32 // GameOn SELECT
+// #define BUTTON_B_PIN 0 //  GameOn START
+// #define BUTTON_C_PIN 27 // GameOn A
+#define BUTTON_A_PIN 34 // GameOn Button
+#define BUTTON_B_PIN 12 // GameOn B
+#define BUTTON_C_PIN 13 // GameOn A
 
 #endif
 // UART

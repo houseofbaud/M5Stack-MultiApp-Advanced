@@ -70,3 +70,4 @@ ipch/
 *.exe
 *.out
 *.app
+.vscode/extensions.json
