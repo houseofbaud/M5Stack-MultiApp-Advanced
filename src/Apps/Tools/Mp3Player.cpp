@@ -92,9 +92,6 @@ void Mp3PlayerClass::drawTimeline()
 
 void Mp3PlayerClass::Play(String *fileName)
 {
-    Serial.print("Mp3PlayerClass::Play ");
-    Serial.println(fileName->c_str());
-
     M5m.windowClr();
     M5m.Lcd.setTextColor(TFT_CYAN);
     M5m.Lcd.drawCentreString(*fileName, 158, 140, 2);
@@ -104,7 +101,7 @@ void Mp3PlayerClass::Play(String *fileName)
     // out = new AudioOutputI2S(0, 1);
     out = new AudioOutputI2S(0, 1, 32);
     mp3 = new AudioGeneratorMP3();
-    // out->SetChannels(2);
+    out->SetChannels(2);
     mp3->begin(file, out);
     setVolume(&M5m.vol);
     M5m.old_vol = M5m.vol;
@@ -121,8 +118,8 @@ void Mp3PlayerClass::Play(String *fileName)
                 mp3->stop();
                 break;
             }
-            // genSpectrum();
-            // drawTimeline();
+            genSpectrum();
+            drawTimeline();
         }
         if (M5m.BtnA.wasPressed() && M5m.vol > 0)
         {
