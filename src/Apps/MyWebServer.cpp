@@ -344,8 +344,8 @@ void WebServerClass::Run()
             {
                 vTaskDelete(webServerTask);
                 webServerTask = NULL;
-                M5m.Lcd.drawString("MDNS server stopped", 10, 40, 4);
-                M5m.Lcd.drawString("HTTP server stopped", 10, 70, 4);
+                M5m.Lcd.drawString("MDNS server stopped", 10, 40, 2);
+                M5m.Lcd.drawString("HTTP server stopped", 10, 70, 2);
             }
         }
 
