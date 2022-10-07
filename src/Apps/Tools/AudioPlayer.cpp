@@ -1,19 +1,19 @@
-#include "Mp3Player.h"
+#include "AudioPlayer.h"
 
-void Mp3PlayerClass::getvolume()
+void AudioPlayerClass::getvolume()
 {
     preferences.begin("Volume", false);
     M5m.vol = preferences.getFloat("vol", 15.0f);
     preferences.end();
 }
 
-void Mp3PlayerClass::setVolume(int *v)
+void AudioPlayerClass::setVolume(int *v)
 {
     float volume = *v / 71.4f; // volme max value can be 3.99
     out->SetGain(volume);
 }
 
-void Mp3PlayerClass::drawSpectrum(int a, int b, int c, int d, int e, int f, int g)
+void AudioPlayerClass::drawSpectrum(int a, int b, int c, int d, int e, int f, int g)
 {
     aH = ((a * height) / 100);
     aY = ys + (height - aH);
@@ -57,7 +57,7 @@ void Mp3PlayerClass::drawSpectrum(int a, int b, int c, int d, int e, int f, int 
     M5m.Lcd.fillRect(gX, gY, widthS, gH, TFT_LIGHTGREY); //0x051d
 }
 
-void Mp3PlayerClass::genSpectrum()
+void AudioPlayerClass::genSpectrum()
 {
     currentMillis = millis();
     if (currentMillis - genSpectrum_previousMillis > 100)
@@ -67,7 +67,7 @@ void Mp3PlayerClass::genSpectrum()
     }
 }
 
-void Mp3PlayerClass::drawTimeline()
+void AudioPlayerClass::drawTimeline()
 {
     currentMillis = millis();
     if (currentMillis - drawTimeline_previousMillis > 250)
@@ -90,7 +90,7 @@ void Mp3PlayerClass::drawTimeline()
     }
 }
 
-void Mp3PlayerClass::Play(String *fileName)
+void AudioPlayerClass::Play(String *fileName)
 {
     M5m.windowClr();
     M5m.Lcd.setTextColor(TFT_CYAN);
@@ -158,13 +158,13 @@ void Mp3PlayerClass::Play(String *fileName)
     M5m.windowClr();
 }
 
-Mp3PlayerClass::Mp3PlayerClass()
+AudioPlayerClass::AudioPlayerClass()
 {
     M5m.update();
-    M5m.drawAppMenu(F("Mp3Player"), F("VOL-"), F("EXIT"), F("VOL+"));
+    M5m.drawAppMenu(F("AudioPlayer"), F("VOL-"), F("EXIT"), F("VOL+"));
 }
 
-Mp3PlayerClass::~Mp3PlayerClass()
+AudioPlayerClass::~AudioPlayerClass()
 {
     M5m.drawAppMenu(F("SD BROWSER"), F("EXIT"), F("OPEN"), F(">"));
     M5m.showList();

@@ -1,11 +1,11 @@
 #pragma once
 #include "M5StackMod.h"
 
-class Mp3PlayerClass
+class AudioPlayerClass
 {
   public:
-    Mp3PlayerClass();
-    ~Mp3PlayerClass();
+    AudioPlayerClass();
+    ~AudioPlayerClass();
 
     void Play(String *fileName);
 

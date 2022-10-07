@@ -136,9 +136,26 @@ void SdBrowserClass::Run()
             }
             else if (FileName.endsWith(".mp3"))
             {
-                Mp3PlayerClass Mp3PlayerObj;
+                AudioPlayerClass Mp3PlayerObj;
                 Mp3PlayerObj.Play(&FileName);
             }
+            /*
+            else if (FileName.endsWith(".wav"))
+            {
+                AudioPlayerClass WavPlayerObj;
+                WavPlayerObj.Play(&FileName);
+            }
+            else if (FileName.endsWith(".m4a"))
+            {
+                AudioPlayerClass AACPlayerObj;
+                AACPlayerObj.Play(&FileName);
+            }
+            else if (FileName.endsWith(".flac"))
+            {
+                AudioPlayerClass FlacPlayerObj;
+                FlacPlayerObj.Play(&FileName);
+            }
+            */
             else if (FileName.endsWith(".mov"))
             {
                 VideoPlayerClass VideoPlayerObj;
