@@ -37,7 +37,7 @@ void WifiSettingsClass::SmartConfig()
 {
     int i = 0;
     WiFi.mode(WIFI_AP_STA);
-    WiFi.beginSmartConfig();
+    WiFi.beginSmartConfig(SC_TYPE_ESPTOUCH_V2, "AAAAAAAAAAAAAAAA");
     M5m.Lcd.drawString("Waiting for SmartConfig", 5, 30, 2);
     while (!WiFi.smartConfigDone())
     {
