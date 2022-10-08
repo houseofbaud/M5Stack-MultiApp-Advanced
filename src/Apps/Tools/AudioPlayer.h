@@ -7,7 +7,8 @@ class AudioPlayerClass
     AudioPlayerClass();
     ~AudioPlayerClass();
 
-    void Play(String *fileName);
+    // fileType: 1 = MP3, 2 = WAV, 3 = AAC/M4A, 4 = FLAC
+    void Play(String *fileName, int fileType);
 
   private:
     unsigned long currentMillis;
@@ -33,7 +34,7 @@ class AudioPlayerClass
     void genSpectrum();
     void drawTimeline();
 
-    AudioGeneratorMP3 *mp3;
+    AudioGenerator *sndStream;
     AudioFileSourceSD *file;
     AudioOutputI2S *out;
 };
