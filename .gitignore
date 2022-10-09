@@ -5,8 +5,8 @@
 .vscode/launch.json
 .clang_complete
 .gcc-flags.json
-.DSStore
-*.DSStore
+.DS_Store
+*.DS_Store
 
 ##############################################################################
 # User-Specific Files
