@@ -35,9 +35,13 @@ void WifiSettingsClass::APSTA_Mode()
 
 void WifiSettingsClass::SmartConfig()
 {
+    // Set the static key for SmartConfig in ESPTOUCH_V2 Mode
+    char WIFI_CRYPT_KEY[] = "AAAAAAAAAAAAAAAA";
+    
     int i = 0;
     WiFi.mode(WIFI_AP_STA);
-    WiFi.beginSmartConfig();
+    WiFi.beginSmartConfig(SC_TYPE_ESPTOUCH_V2, WIFI_CRYPT_KEY);
+
     M5m.Lcd.drawString("Waiting for SmartConfig", 5, 30, 2);
     while (!WiFi.smartConfigDone())
     {
@@ -163,7 +167,7 @@ void WifiSettingsClass::Run()
 }
 
 WifiSettingsClass::WifiSettingsClass()
-{
+{ 
     M5m.drawAppMenu(F("WiFi"), F("ESC"), F("SELECT"), F("LIST"));
     M5m.update();
 }
