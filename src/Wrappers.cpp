@@ -27,11 +27,11 @@ void appCfgbrightness()
     BrightnessObj.Run();
 }
 
-void appOscilloscope()
+/*void appOscilloscope()
 {
     OscilloscopeClass OscilloscopeObj;
     OscilloscopeObj.Run();
-}
+}*/
 
 void appSdBrowser()
 {
@@ -57,20 +57,21 @@ void appWebServer()
     WebServerObj.Run();
 }
 
-void appGamesList()
+/*void appGamesList()
 {
     GamesListClass GamesListObj;
     GamesListObj.Run();
-}
+}*/
 
-void appWebRadio()
+
+/*void appWebRadio()
 {
     WebRadioClass WebRadioObj;
     WebRadioObj.Run();
-}
+}*/
 
-void appWeatherStation()
+/*void appWeatherStation()
 {
     WeatherStationClass WeatherStationObj;
     WeatherStationObj.Run();
-}
+}*/

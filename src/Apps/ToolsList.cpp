@@ -10,12 +10,13 @@ void appListTools()
     }
     M5m.clearList();
     M5m.setListCaption("TOOLS");
-    M5m.addList("FOXGRAPH");
+    //M5m.addList("FOXGRAPH");
     M5m.addList("WIFI PACKET MONITOR");
     M5m.addList("WIFI SCANNER");
     M5m.addList("I2C SCANNER");
     M5m.addList("DHT TEMP & HUMIDITY");
     M5m.addList("STOPWATCH");
+    M5m.addList("RPM GAUGE");
     M5m.showList();
 
     while (!M5m.BtnA.wasPressed())
@@ -50,10 +51,15 @@ void appListTools()
                 StopWatchClass StopWatchObj;
                 StopWatchObj.Run();
             }
-            if (M5m.getListString() == "FOXGRAPH")
+            /*if (M5m.getListString() == "FOXGRAPH")
             {
                 FoxGraphClass FoxGraphObj;
                 FoxGraphObj.Run();
+            }*/
+            if (M5m.getListString() == "RPM GAUGE")
+            {
+                RPMGaugeClass RPMGaugeObj;
+                RPMGaugeObj.Run();
             }
         }
         M5m.update();
