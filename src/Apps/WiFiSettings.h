@@ -4,11 +4,13 @@
 class WifiSettingsClass
 {
 public:
+    static char WIFI_CRYPT_KEY[];
+
     WifiSettingsClass();
     ~WifiSettingsClass();
 
     void Run();
-
+    
 private:
     void AP_Mode();
     void STA_Mode();
