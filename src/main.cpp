@@ -29,13 +29,13 @@ void setup()
 	M5m.addMenuItem(0, "ABOUT", "<", "OK", ">", -1, About, appAbout);
 	M5m.addMenuItem(0, "SLEEP/CHARGING", "<", "OK", ">", -1, Sleep, appSleep);
 
-	M5m.addMenuItem(1, "OSCILLOSCOPE", "<", "OK", ">", -1, Oscilloscope, appOscilloscope);
-	M5m.addMenuItem(1, "WEBRADIO", "<", "OK", ">", -1, WebRadio, appWebRadio);
-	M5m.addMenuItem(1, "WEATHER STATION", "<", "OK", ">", -1, WeatherStation, appWeatherStation);
+	//M5m.addMenuItem(1, "OSCILLOSCOPE", "<", "OK", ">", -1, Oscilloscope, appOscilloscope);
+	//M5m.addMenuItem(1, "WEBRADIO", "<", "OK", ">", -1, WebRadio, appWebRadio);
+	//M5m.addMenuItem(1, "WEATHER STATION", "<", "OK", ">", -1, WeatherStation, appWeatherStation);
 	M5m.addMenuItem(1, "WEBSERVER", "<", "OK", ">", -1, Webserver, appWebServer);
 	M5m.addMenuItem(1, "SD BROWSER", "<", "OK", ">", -1, Browser, appSdBrowser);
 	M5m.addMenuItem(1, "TOOLS", "<", "OK", ">", -1, Tools, appListTools);
-	M5m.addMenuItem(1, "GAMES", "<", "OK", ">", -1, Games, appGamesList);
+	//M5m.addMenuItem(1, "GAMES", "<", "OK", ">", -1, Games, appGamesList);
 	M5m.addMenuItem(1, "RETURN", "<", "OK", ">", 0, Return, appReturn);
 
 	M5m.addMenuItem(2, "SYSTEM INFORMATIONS", "<", "OK", ">", -1, Sysinfo, appSysInfo);

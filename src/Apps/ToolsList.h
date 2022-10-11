@@ -5,7 +5,7 @@
 #include "Tools/I2CScanner.h"
 #include "Tools/WifiPacketMonitor.h"
 #include "Tools/StopWatch.h"
-#include "Tools/FoxGraph.h"
+//#include "Tools/FoxGraph.h"
 #include "Tools/RPMGauge.h"
 
 void appListTools();
