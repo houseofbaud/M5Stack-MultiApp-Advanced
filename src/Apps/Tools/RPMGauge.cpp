@@ -59,7 +59,9 @@ RPMGaugeClass::RPMGaugeClass()
 {
   // Make sure we're not stalled by a previous failed run
   ELMConnected = false;
-  //ELM_PORT.disconnect();
+  name = "VHM-ble";
+  
+  ELM_PORT.disconnect();
 
   M5m.drawAppMenu(F("RPM GAUGE"), F("ESC"), F("A"), F("B"));
   M5m.update();

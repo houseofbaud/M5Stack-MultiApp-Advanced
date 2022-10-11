@@ -29,7 +29,7 @@ private:
     //String MACadd = "AA:BB:CC:11:22:33";
     //uint8_t address[6]  = {0xAA, 0xBB, 0xCC, 0x11, 0x22, 0x33};
 
-    String name = "VHM-ble";  // the name of the Nonda ZUS adapter, ELM327 v1.5 firmware
+    String name;  // the name of the Nonda ZUS adapter, ELM327 v1.5 firmware
     const char *pin = "1234"; //<- standard pin would be provided by default
 
 
