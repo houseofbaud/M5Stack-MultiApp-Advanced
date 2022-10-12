@@ -15,7 +15,9 @@ private:
   bool done = false;
   uint8_t page = 0;
   uint8_t baseMac[6];
+  uint8_t bleMacAddr[6];
   char baseMacChr[18] = {0};
+  char bleMacChr[18] = {0};
   int type;
   String WiFiMAC;
   uint64_t sdSize;
@@ -24,6 +26,7 @@ private:
   String wifi_m_mode[5] = {"OFF", "STA", "AP", "AP STA", "MAX"};
 
   String getWiFiMac();
+  String getBLEMac();
   void page_0();
   void page_1();
   void drawpage(int page);

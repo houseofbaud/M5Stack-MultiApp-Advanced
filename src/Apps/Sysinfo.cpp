@@ -7,6 +7,13 @@ String SysinfoClass::getWiFiMac()
     return String(baseMacChr);
 }
 
+String SysinfoClass::getBLEMac()
+{
+    esp_read_mac(bleMacAddr, ESP_MAC_BT);
+    sprintf(bleMacChr, "%02X:%02X:%02X:%02X:%02X:%02X", bleMacAddr[0], bleMacAddr[1], bleMacAddr[2], bleMacAddr[3], bleMacAddr[4], bleMacAddr[5]);
+    return String(bleMacChr);
+}
+
 void SysinfoClass::page_0()
 {
     M5m.Lcd.drawString(F("CPU FREQ:"), 10, 40, 2);
@@ -52,6 +59,9 @@ void SysinfoClass::page_1()
 
     M5m.Lcd.drawString(F("SD CARD TYPE:"), 10, 120, 2);
     M5m.Lcd.drawString(SD_Type[type], 120, 120, 2);
+
+    M5m.Lcd.drawString(F("BLE MAC:"), 10, 180, 2);
+    M5m.Lcd.drawString(getBLEMac(), 120, 180, 2);
 
     if (type != 0)
     {
