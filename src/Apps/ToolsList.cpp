@@ -11,8 +11,8 @@ void appListTools()
     M5m.clearList();
     M5m.setListCaption("TOOLS");
     //M5m.addList("FOXGRAPH");
-    M5m.addList("WIFI PACKET MONITOR");
-    M5m.addList("WIFI SCANNER");
+    //M5m.addList("WIFI PACKET MONITOR");
+    //M5m.addList("WIFI SCANNER");
     M5m.addList("I2C SCANNER");
     M5m.addList("DHT TEMP & HUMIDITY");
     M5m.addList("STOPWATCH");
@@ -32,20 +32,20 @@ void appListTools()
                 DhtReaderClass DhtReaderObj;
                 DhtReaderObj.Run();
             }
-            if (M5m.getListString() == "WIFI SCANNER")
+            /*if (M5m.getListString() == "WIFI SCANNER")
             {
                 WifiScannerClass WifiScannerObj;
                 WifiScannerObj.Run();
-            }
+            }*/
             if (M5m.getListString() == "I2C SCANNER")
             {
                I2CScannerClass I2CScannerObj;
                I2CScannerObj.Run();
             }
-            if (M5m.getListString() == "WIFI PACKET MONITOR")
+            /*if (M5m.getListString() == "WIFI PACKET MONITOR")
             {
                Monitor_run();
-            }
+            }*/
             if (M5m.getListString() == "STOPWATCH")
             {
                 StopWatchClass StopWatchObj;
@@ -58,8 +58,9 @@ void appListTools()
             }*/
             if (M5m.getListString() == "RPM GAUGE")
             {
-                RPMGaugeClass RPMGaugeObj;
-                RPMGaugeObj.Run();
+                RPMGaugeClass *rpmGaugeApp = new RPMGaugeClass;
+                rpmGaugeApp->Run();
+                delete rpmGaugeApp;
             }
         }
         M5m.update();
