@@ -15,22 +15,31 @@ public:
     ~RPMGaugeClass();
 
     void Run();
+    void ScanBLEDevices();
+
+    bool InitELMPort();
     bool ConnectELM();
-    bool IsELMConnected();
 
 private:
     BluetoothSerial SerialBT;
     ELM327 myELM327;
 
-    bool ELMConnected;
     uint8_t retryCount;
-    uint32_t rpm;
+    uint16_t pollRate = 1000; // poll rate in ms between ELM327 reads
+    uint16_t rpm;
 
-    //String MACadd = "AA:BB:CC:11:22:33";
-    //uint8_t address[6]  = {0xAA, 0xBB, 0xCC, 0x11, 0x22, 0x33};
+    bool ELMInitialized = false;
+    bool ELMConnected   = false;
 
-    String name;  // the name of the Nonda ZUS adapter, ELM327 v1.5 firmware
-    const char *pin = "1234"; //<- standard pin would be provided by default
+    String getBLEMac();
+    uint8_t bleMacAddress[6];
+    char bleMacChr[18] = {0};
 
+    BTScanResults *bleClientDevices;
+    BTAdvertisedDevice *myBLEDevice;
 
+    String clientName       = "VHM-classic";    // the name of the Nonda ZUS adapter, ELM327 v1.5 firmware
+    String broadcastName    = "MELODYBOX";      // our announce name
+
+    const char *pin         = "1234";           // Default PIN for ELM327 products is 1234
 };
