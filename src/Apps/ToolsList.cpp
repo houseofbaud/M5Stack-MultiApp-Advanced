@@ -58,9 +58,8 @@ void appListTools()
             }*/
             if (M5m.getListString() == "RPM GAUGE")
             {
-                RPMGaugeClass *rpmGaugeApp = new RPMGaugeClass;
-                rpmGaugeApp->Run();
-                delete rpmGaugeApp;
+                RPMGaugeClass RPMGaugeObj;
+                RPMGaugeObj.Run();
             }
         }
         M5m.update();
